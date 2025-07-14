@@ -1,0 +1,135 @@
+body {
+  background: #e0f7fa;
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+#startScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+#startScreen h1 {
+  color: #ff8c42;
+  font-size: 3em;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 0px #ffd166;
+}
+
+#startScreen button {
+  background: #a3cef1;
+  border: 3px solid #ffd166;
+  border-radius: 12px;
+  padding: 15px 30px;
+  font-size: 1.5em;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: all 0.2s;
+}
+
+#startScreen button:hover {
+  background: #b5ead7;
+  transform: scale(1.05);
+}
+
+#startScreen p {
+  margin-top: 15px;
+  color: #666;
+  font-size: 0.9em;
+}
+#topbar {
+  position: absolute;
+  top: 24px;
+  right: 40px;
+  z-index: 10;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+#topbar button {
+  background: #fffbe7;
+  border: 2px solid #ffd166;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.7em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s;
+}
+#scoreboard {
+  position: absolute;
+  top: 32px;
+  left: 32px;
+  z-index: 10;
+  background: #fffbe7cc;
+  border: 2px solid #ffd166;
+  border-radius: 16px;
+  padding: 18px 24px 18px 24px;
+  font-size: 1.1em;
+  color: #7c4700;
+  min-width: 120px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  user-select: none;
+}
+#scoreboard .score-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+#scoreboard .score-row:last-child {
+  margin-bottom: 0;
+}
+#topbar button:hover {
+  background: #ffe082;
+}
+#gameCanvas {
+  display: block;
+  margin: 40px auto 0 auto;
+  background: #b2dfdb;
+  border: 4px solid #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+#popup {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+#popupContent {
+  background: #fffbe7;
+  border: 2px solid #ffd166;
+  border-radius: 16px;
+  padding: 32px 40px;
+  font-size: 1.2em;
+  color: #00796b;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+  text-align: center;
+  min-width: 300px;
+}
+#popupClose {
+  margin-top: 18px;
+  background: #ffd166;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 1em;
+  color: #7c4700;
+  cursor: pointer;
+}

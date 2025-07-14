@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cute Animal Platformer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="startScreen">
+    <h1>Cute Animal Platformer</h1>
+    <button id="startButton">Start Game with Sound</button>
+    <p>(Click this button to enable sound)</p>
+  </div>
+
+  <div id="gameArea" style="display:none;">
+    <div id="topbar">
+      <button id="restartBtn" title="Restart">🔄</button>
+      <button id="infoBtn" title="How to play">ℹ️</button>
+      <button id="pauseBtn" title="Pause">⏸️</button>
+    </div>
+    <div id="scoreboard"></div>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <div id="popup" style="display:none;"></div>
+  </div>
+
+  <script>
+    // Start screen logic
+    document.getElementById('startButton').addEventListener('click', function() {
+      document.getElementById('startScreen').style.display = 'none';
+      document.getElementById('gameArea').style.display = 'block';
+      
+      // Force audio context to be created and resumed
+      try {
+        window.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        window.audioContext.resume().then(() => {
+          console.log("AudioContext resumed successfully");
+          window.audioEnabled = true;
+          // Test sound (no delay)
+          const testOsc = window.audioContext.createOscillator();
+          const testGain = window.audioContext.createGain();
+          testOsc.connect(testGain);
+          testGain.connect(window.audioContext.destination);
+          testOsc.frequency.value = 440;
+          testGain.gain.value = 0.1;
+          testOsc.start();
+          testOsc.stop(window.audioContext.currentTime + 0.2);
+          console.log("Test sound played");
+          // Start game loop
+          gameLoop();
+        });
+      } catch(e) {
+        console.error("Error initializing audio:", e);
+        // Start game even if audio fails
+        gameLoop();
+      }
+    });
+  </script>
+  <script src="main.js"></script>
+</body>
+</html>
